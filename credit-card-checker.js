@@ -78,5 +78,4 @@ const idInvalidCardCompanies = nestedArray => {
   }
 }
 
-
 console.log(idInvalidCardCompanies(findInvalidCards(batch)))
