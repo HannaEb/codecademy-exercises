@@ -23,7 +23,7 @@ const pAequorFactory = (number, array) => {
       let index = this.dna.indexOf(currentBase);
       if (currentBase !== newBase) {
         this.dna[index] = newBase;
-      }else {
+      } else {
         this.mutate();
       }
     },
