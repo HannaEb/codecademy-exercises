@@ -7,22 +7,24 @@ export const ContactsPage = ( { contacts, addContact } ) => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [duplicate, setDuplicate] = useState(false);
+  const [alert, setAlert] = useState('')
   
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!duplicate) {
       addContact(name, phone, email);
-      console.log(name)
       setName('');
       setPhone('');
       setEmail('');
+      setAlert('');
+    } else {
+      setAlert('This contact already exists!')
     }
   };
 
   useEffect(() => {
-    if (contacts.includes(name)) {
+    const result = contacts.find(contact => contact.name === name);
+    if (result !== undefined) {
       setDuplicate(true);
     } else {
       setDuplicate(false);
@@ -37,6 +39,7 @@ export const ContactsPage = ( { contacts, addContact } ) => {
                     phone={phone} setPhone={setPhone}
                     email={email} setEmail={setEmail}
                     handleSubmit={handleSubmit}
+                    alert={alert}
         /> 
       </section>
       <hr />

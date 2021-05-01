@@ -7,7 +7,8 @@ export const ContactForm = ({
   setPhone,
   email,
   setEmail,
-  handleSubmit
+  handleSubmit, 
+  alert
 }) => {
   return (
     <form onSubmit={handleSubmit}>
@@ -17,6 +18,7 @@ export const ContactForm = ({
               pattern='((\+44(\s\(0\)\s|\s0\s|\s)?)|0)7\d{3}(\s)?\d{6}' placeholder='Phone Number' required />
       <input type='email' name='email' value={email} onChange={e => setEmail(e.target.value)}
               pattern="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" placeholder='Your Email' required />
+      <p style={{color: 'red'}}>{alert}</p>
       <input type='submit' value='Add Contact' />
     </form>
   );
