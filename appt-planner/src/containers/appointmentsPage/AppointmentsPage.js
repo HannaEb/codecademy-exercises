@@ -4,9 +4,11 @@ import { TileList } from '../../components/tileList/TileList.js';
 
 export const AppointmentsPage = ({ appointments, addAppointment, contacts }) => {
   const [title, setTitle] = useState('');
-  const [contact, setContact] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [contact, setContact] = useState(
+    contacts.length > 0 ? contacts[0].name : ''
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +23,8 @@ export const AppointmentsPage = ({ appointments, addAppointment, contacts }) => 
     <div>
       <section>
         <h2>Add Appointment</h2>
-        <AppointmentForm contact={contact} setContact={setContact}
+        <AppointmentForm contacts={contacts}
+                          contact={contact} setContact={setContact}
                           title={title} setTitle={setTitle}
                           date={date} setDate={setDate}
                           time={time} setTime={setTime}
@@ -31,6 +34,7 @@ export const AppointmentsPage = ({ appointments, addAppointment, contacts }) => 
       <hr />
       <section>
         <h2>Appointments</h2>
+        <TileList tiles={appointments} />
       </section>
     </div>
   );
